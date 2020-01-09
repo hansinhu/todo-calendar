@@ -5,19 +5,27 @@
     "start": "npm run site:develop",
     "site:develop": "gatsby develop --open -H 0.0.0.0",
     "site:build": "npm run site:clean && gatsby build --prefix-paths",
-    "site:clean": "gatsby clean"
+    "site:clean": "gatsby clean",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "devDependencies": {
     "lerna": "^3.20.2"
   },
   "dependencies": {
-    "@antv/g2": "^3.5.11",
-    "@antv/gatsby-theme-antv": "^0.10.17",
-    "@antv/istanbul": "0.0.0",
-    "@antv/torch": "^1.0.0",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
-    "gatsby": "^2.15.34",
+    "gatsby": "^2.18.12",
+    "gatsby-image": "^2.2.34",
+    "gatsby-plugin-manifest": "^2.2.31",
+    "gatsby-plugin-offline": "^3.0.27",
+    "gatsby-plugin-react-helmet": "^3.1.16",
+    "gatsby-plugin-sharp": "^2.3.5",
+    "gatsby-source-filesystem": "^2.1.40",
+    "gatsby-transformer-sharp": "^2.3.7",
+    "prop-types": "^15.7.2",
     "gh-pages": "^2.1.1",
     "husky": "^3.1.0",
     "lodash": "^4.17.11",
@@ -26,6 +34,7 @@
     "ptz-i18n": "^1.0.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "react-helmet": "^5.2.1",
     "tslib": "^1.10.0"
   }
 }
