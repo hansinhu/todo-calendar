@@ -15,3 +15,6 @@ selenium-debug.log
 *.njsproj
 *.sln
 .vscode
+
+# ignore static files of site
+public/
