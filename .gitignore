@@ -17,4 +17,4 @@ selenium-debug.log
 .vscode
 
 # ignore static files of site
-# public/
+public/
