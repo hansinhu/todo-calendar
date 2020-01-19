@@ -1,16 +1,11 @@
 {
-  "name": "@todo-calendar/react",
+  "name": "for-vue",
   "version": "1.0.0",
-  "description": "todo-calendar for react",
-  "keywords": [
-    "todo-calendar",
-    "react",
-    "compoents"
-  ],
+  "description": "> TODO: description",
   "author": "hansin <huxinghan@loonxi.com>",
   "homepage": "https://github.com/hansinhu/todo-calendar#readme",
   "license": "ISC",
-  "main": "lib/index.js",
+  "main": "lib/for-vue.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -18,9 +13,6 @@
   "files": [
     "lib"
   ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hansinhu/todo-calendar.git"
@@ -30,8 +22,5 @@
   },
   "bugs": {
     "url": "https://github.com/hansinhu/todo-calendar/issues"
-  },
-  "dependencies": {
-    "webpack": "^4.41.5"
   }
 }

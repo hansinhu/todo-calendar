@@ -1,6 +1,7 @@
 {
   "name": "root",
   "private": true,
+  "workspaces": ["packages/core", "packages/for-react", "packages/for-vue"],
   "scripts": {
     "start": "npm run site:develop",
     "site:develop": "gatsby develop --open -H 0.0.0.0",

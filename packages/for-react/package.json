@@ -1,0 +1,32 @@
+{
+  "name": "for-react",
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "hansin <huxinghan@loonxi.com>",
+  "homepage": "https://github.com/hansinhu/todo-calendar#readme",
+  "license": "ISC",
+  "main": "lib/for-react.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hansinhu/todo-calendar.git"
+  },
+  "scripts": {
+    "build": "tsc ./src/index.tsx",
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/hansinhu/todo-calendar/issues"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.17",
+    "react": "^16.12.0",
+    "typescript": "^3.7.5"
+  }
+}

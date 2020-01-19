@@ -18,3 +18,5 @@ selenium-debug.log
 
 # ignore static files of site
 public/
+
+lerna-debug.log
