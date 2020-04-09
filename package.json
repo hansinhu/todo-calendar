@@ -1,19 +1,27 @@
 {
-  "name": "root",
   "private": true,
   "workspaces": [
-    "packages/core",
-    "packages/for-react",
-    "packages/for-vue"
+    "packages/*"
   ],
+  "version": "1.0.0",
+  "homepage": "https://github.com/hansinhu/todo-calendar",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:hansinhu/todo-calendar.git"
+  },
   "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "build": "lerna run build",
+    "link": "lerna link",
+    "test": "lerna run test",
+    "publish": "lerna publish",
+    "publish-beta": "npm run pre-publish && lerna publish --dist-tag beta",
     "site:develop": "gatsby develop --open -H 0.0.0.0",
     "site:build": "npm run site:clean && gatsby build --prefix-paths",
     "site:clean": "gatsby clean",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "clean": "gatsby clean"
   },
   "devDependencies": {
     "lerna": "^3.20.2"
@@ -28,13 +36,14 @@
     "gatsby-plugin-react-helmet": "^3.1.16",
     "gatsby-plugin-sharp": "^2.3.5",
     "gatsby-source-filesystem": "^2.1.40",
+    "gatsby-theme-hansin": "0.0.5",
     "gatsby-transformer-sharp": "^2.3.7",
-    "prop-types": "^15.7.2",
     "gh-pages": "^2.1.1",
     "husky": "^3.1.0",
     "lodash": "^4.17.11",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1",
+    "prop-types": "^15.7.2",
     "ptz-i18n": "^1.0.0",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",

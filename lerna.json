@@ -1,6 +1,8 @@
 {
   "packages": [
-    "packages/*"
+    "packages/core",
+    "packages/for-react",
+    "packages/for-vue"
   ],
   "version": "independent",
   "command": {

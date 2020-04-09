@@ -1,11 +1,12 @@
 {
-  "name": "for-vue",
+  "name": "@todo-calendar/for-vue",
   "version": "1.0.0",
   "description": "> TODO: description",
   "author": "hansin <huxinghan@loonxi.com>",
   "homepage": "https://github.com/hansinhu/todo-calendar#readme",
   "license": "ISC",
-  "main": "lib/for-vue.js",
+  "main": "lib/index.js",
+  "moudule": "es/index.js",
   "directories": {
     "lib": "lib",
     "test": "__tests__"

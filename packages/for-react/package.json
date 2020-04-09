@@ -1,5 +1,5 @@
 {
-  "name": "for-react",
+  "name": "@todo-calendar/for-react",
   "version": "1.0.0",
   "description": "Pretty Footer react component used in used in ant.design",
   "keywords": [
@@ -10,8 +10,8 @@
     "antd",
     "ant-design"
   ],
-  "main": "./lib/index",
-  "module": "./es/index",
+  "main": "lib/index",
+  "module": "es/index",
   "files": [
     "assets/*.css",
     "assets/*.less",
@@ -29,16 +29,18 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "cross-env NODE_ENV=development father doc dev --storybook",
-    "build": "father doc build --storybook",
-    "compile": "father build && lessc assets/index.less assets/index.css",
-    "gh-pages": "npm run build && father doc deploy",
+    "start": "rc-tools run server",
+    "build": "rc-tools run build",
+    "compile": "npx father build && lessc assets/index.less assets/index.css",
+    "gh-pages": "rc-tools run gh-pages",
     "prepublishOnly": "npm run compile && np --yolo --no-publish && npm run gh-pages",
-    "lint": "eslint src/ --ext .ts,.tsx,.jsx,.js,.md",
+    "lint": "rc-tools run lint",
     "prettier": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "pretty-quick": "pretty-quick",
     "test": "father test",
-    "coverage": "father test --coverage"
+    "coverage": "father test --coverage",
+    "pub": "rc-tools run update-self && rc-tools run pub",
+    "prepublish": "rc-tools run guard"
   },
   "dependencies": {
     "classnames": "^2.2.1"
@@ -60,6 +62,7 @@
     "np": "^5.1.0",
     "prettier": "^1.18.2",
     "pretty-quick": "^2.0.1",
+    "rc-tools": "^9.6.1-alpha.1",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
     "react-test-renderer": "^16.0.0"
