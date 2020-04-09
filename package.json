@@ -1,4 +1,5 @@
 {
+  "name": "todo-calendar",
   "private": true,
   "workspaces": [
     "packages/*"
@@ -52,7 +53,8 @@
   "dependencies": {
     "@todo-calendar/core": "file:packages/core",
     "@todo-calendar/for-react": "file:packages/for-react",
-    "@todo-calendar/for-vue": "file:packages/for-vue"
-  },
-  "name": "todo-calendar"
+    "@todo-calendar/for-vue": "file:packages/for-vue",
+    "gatsby": "^2.20.15",
+    "gatsby-theme-hansin": "0.0.6"
+  }
 }
