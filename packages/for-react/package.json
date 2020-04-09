@@ -43,29 +43,8 @@
     "prepublish": "rc-tools run guard"
   },
   "dependencies": {
+    "@todo-calcender/core": "^1.0.1-alpha.0",
     "classnames": "^2.2.1"
-  },
-  "devDependencies": {
-    "@types/classnames": "^2.2.9",
-    "@types/react": "^16.9.2",
-    "@types/react-dom": "^16.9.0",
-    "@umijs/fabric": "^1.1.10",
-    "coveralls": "^3.0.6",
-    "cross-env": "^6.0.0",
-    "enzyme": "^3.0.0",
-    "enzyme-adapter-react-16": "^1.0.1",
-    "enzyme-to-json": "^3.4.0",
-    "eslint": "^6.6.0",
-    "father": "^2.13.4",
-    "husky": "^3.0.9",
-    "less": "^3.10.3",
-    "np": "^5.1.0",
-    "prettier": "^1.18.2",
-    "pretty-quick": "^2.0.1",
-    "rc-tools": "^9.6.1-alpha.1",
-    "react": "^16.0.0",
-    "react-dom": "^16.0.0",
-    "react-test-renderer": "^16.0.0"
   },
   "peerDependencies": {
     "react": "^16.0.0",
@@ -81,5 +60,6 @@
   },
   "tnpm": {
     "mode": "npm"
-  }
+  },
+  "gitHead": "e0a9a42f6aed788ffdbc6d1f0327a5d33a8d8cac"
 }

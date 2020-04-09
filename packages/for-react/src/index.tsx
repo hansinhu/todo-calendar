@@ -1,5 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
+import { formateDate } from '@todo-calendar/core'
 
 export interface FooterProps {
   prefixCls?: string;
@@ -12,7 +13,7 @@ export interface FooterProps {
   columnLayout?: 'space-around' | 'space-between';
 }
 
-const Footer: React.FC<FooterProps> = ({
+const TodoCalenderReact: React.FC<FooterProps> = ({
   prefixCls = 'rc-footer',
   className,
   style,
@@ -20,7 +21,7 @@ const Footer: React.FC<FooterProps> = ({
   maxColumnsPerRow,
   backgroundColor,
   columnLayout,
-  theme = 'dark',
+  theme = 'light',
   ...restProps
 }) => {
   const footerClassName = classNames(`${prefixCls}`, className, {
@@ -35,9 +36,9 @@ const Footer: React.FC<FooterProps> = ({
         backgroundColor,
       }}
     >
-      dddddddd
+      { formateDate('ddddddd') }
     </footer>
   );
 };
 
-export default Footer;
+export default TodoCalenderReact;

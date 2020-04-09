@@ -1,9 +1,5 @@
 {
-  "packages": [
-    "packages/core",
-    "packages/for-react",
-    "packages/for-vue"
-  ],
+  "packages": ["packages/*"],
   "version": "independent",
   "command": {
     "bootstrap": {

@@ -9,27 +9,40 @@
   ],
   "author": "hansin <huxinghan@loonxi.com>",
   "homepage": "https://github.com/hansinhu/todo-calendar#readme",
-  "license": "ISC",
   "main": "lib/index.js",
-  "module": "es/index",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
+  "module": "es/index.js",
+  "types": "lib/index.d.ts",
   "files": [
-    "lib"
+    "package.json",
+    "es",
+    "lib",
+    "LICENSE",
+    "README.md"
   ],
-  "publishConfig": {
-    "registry": "https://registry.npmjs.org"
+  "scripts": {
+    "build": "npm run clean && run-p build:*",
+    "build:es": "tsc -p tsconfig.json --target ES5 --module ESNext --outDir es",
+    "build:cjs": "tsc -p tsconfig.json --target ES5 --module commonjs --outDir lib",
+    "clean": "rm -rf es lib",
+    "watch:cjs": "tsc-watch -p tsconfig.json --target ES5 --module commonjs --outDir lib --compiler typescript/bin/tsc",
+    "coverage": "npm run coverage-generator && npm run coverage-viewer",
+    "coverage-generator": "torch --coverage --compile --source-pattern src/*.js,src/**/*.js --opts tests/mocha.opts",
+    "coverage-viewer": "torch-coverage",
+    "test": "torch --renderer --compile --opts tests/mocha.opts",
+    "test-live": "torch --compile --interactive --opts tests/mocha.opts",
+    "tsc": "tsc --noEmit",
+    "typecheck": "tsc --noEmit"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hansinhu/todo-calendar.git"
+    "url": "git+https://github.com/antvis/util.git"
   },
-  "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+  "publishConfig": {
+    "access": "public"
   },
+  "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hansinhu/todo-calendar/issues"
-  }
+    "url": "https://github.com/antvis/util/issues"
+  },
+  "__npminstall_done": false
 }

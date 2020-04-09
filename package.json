@@ -24,30 +24,35 @@
     "clean": "gatsby clean"
   },
   "devDependencies": {
-    "lerna": "^3.20.2"
-  },
-  "dependencies": {
+    "@antv/torch": "^1.0.0",
+    "@types/classnames": "^2.2.9",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
-    "gatsby": "^2.18.12",
-    "gatsby-image": "^2.2.34",
-    "gatsby-plugin-manifest": "^2.2.31",
-    "gatsby-plugin-offline": "^3.0.27",
-    "gatsby-plugin-react-helmet": "^3.1.16",
-    "gatsby-plugin-sharp": "^2.3.5",
-    "gatsby-source-filesystem": "^2.1.40",
-    "gatsby-theme-hansin": "0.0.5",
-    "gatsby-transformer-sharp": "^2.3.7",
-    "gh-pages": "^2.1.1",
-    "husky": "^3.1.0",
-    "lodash": "^4.17.11",
-    "prettier": "^1.19.1",
+    "@umijs/fabric": "^1.1.10",
+    "coveralls": "^3.0.6",
+    "cross-env": "^6.0.0",
+    "enzyme": "^3.0.0",
+    "enzyme-adapter-react-16": "^1.0.1",
+    "enzyme-to-json": "^3.4.0",
+    "eslint": "^6.6.0",
+    "father": "^2.29.2",
+    "husky": "^3.0.9",
+    "lerna": "^3.20.2",
+    "less": "^3.10.3",
+    "np": "^5.1.0",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^1.18.2",
     "pretty-quick": "^2.0.1",
-    "prop-types": "^15.7.2",
-    "ptz-i18n": "^1.0.0",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "react-helmet": "^5.2.1",
-    "tslib": "^1.10.0"
-  }
+    "rc-tools": "^9.6.1-alpha.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-test-renderer": "^16.0.0",
+    "tsc-watch": "^4.0.0"
+  },
+  "dependencies": {
+    "@todo-calendar/core": "file:packages/core",
+    "@todo-calendar/for-react": "file:packages/for-react",
+    "@todo-calendar/for-vue": "file:packages/for-vue"
+  },
+  "name": "todo-calendar"
 }

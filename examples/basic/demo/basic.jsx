@@ -1,20 +1,18 @@
 import insertCss from 'insert-css';
 import React from 'react';
 import ReactDOM from 'react-dom'
-import Footer from '@todo-calendar/for-react'
-import Footer2 from '../../../packages/for-react/es/index'
-console.log('----2', Footer, Footer2)
+import TodoCalender from '@todo-calendar/for-react'
 
 insertCss(`
-  .custom { background: blue; }
+  .custom { background: #fff; }
 `);
 
 
 const BasicCom = () => {
   return <div
-    onClick={() => { console.log(Footer) }}
+    onClick={() => { console.log(window.forReact) }}
     className='custom'
-  >basicCom <Footer /></div>
+  >basicCom <TodoCalender /></div>
 }
 
 ReactDOM.render(

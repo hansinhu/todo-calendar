@@ -4,7 +4,7 @@
   "description": "> TODO: description",
   "author": "hansin <huxinghan@loonxi.com>",
   "homepage": "https://github.com/hansinhu/todo-calendar#readme",
-  "license": "ISC",
+  "license": "MIT",
   "main": "lib/index.js",
   "moudule": "es/index.js",
   "directories": {
@@ -23,5 +23,6 @@
   },
   "bugs": {
     "url": "https://github.com/hansinhu/todo-calendar/issues"
-  }
+  },
+  "gitHead": "e0a9a42f6aed788ffdbc6d1f0327a5d33a8d8cac"
 }
