@@ -29,18 +29,12 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "rc-tools run server",
-    "build": "rc-tools run build",
     "compile": "npx father build && lessc assets/index.less assets/index.css",
-    "gh-pages": "rc-tools run gh-pages",
     "prepublishOnly": "npm run compile && np --yolo --no-publish && npm run gh-pages",
-    "lint": "rc-tools run lint",
     "prettier": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "pretty-quick": "pretty-quick",
     "test": "father test",
-    "coverage": "father test --coverage",
-    "pub": "rc-tools run update-self && rc-tools run pub",
-    "prepublish": "rc-tools run guard"
+    "coverage": "father test --coverage"
   },
   "dependencies": {
     "@todo-calcender/core": "^1.0.1-alpha.0",

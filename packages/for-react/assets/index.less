@@ -1,141 +1,88 @@
-@footer-prefix-cls: rc-footer;
+@calender-prefix-cls: td-calender;
 
-.@{footer-prefix-cls} {
-  position: relative;
-  clear: both;
-  color: rgba(255, 255, 255, 0.4);
-  font-size: 14px;
-  line-height: 1.5;
-  background-color: #000;
-
-  a {
-    transition: all 0.3s;
-    color: rgba(255, 255, 255, 0.9);
-    text-decoration: none;
-
-    &:hover {
-      color: #40a9ff;
-    }
-  }
-
-  &-container {
-    width: 100%;
-    max-width: 1200px;
-    padding: 80px 0 20px;
-    margin: auto;
-  }
-
-  &-columns {
+.@{calender-prefix-cls} {
+  margin: 0 auto;
+  &-weeks{
+    margin-top: 20px;
     display: flex;
-    justify-content: space-around;
+    border: 1px solid #E1E4E7;
+    border-left: none;
+    border-bottom: none;
   }
-
-  &-column {
-    margin-bottom: 60px;
-
-    h2 {
-      position: relative;
-      margin: 0 auto 24px;
-      font-weight: 500;
-      font-size: 16px;
-      color: #fff;
-    }
-
-    &-icon {
-      margin-right: 0.5em;
-      width: 22px;
-      display: inline-block;
-      vertical-align: middle;
-      top: -1px;
-      position: relative;
-      text-align: center;
-
-      > span,
-      > svg,
-      img {
-        width: 100%;
-        display: block;
-      }
-    }
-  }
-
-  &-item {
-    margin: 12px 0;
-
-    &-icon {
-      margin-right: 0.4em;
-      width: 16px;
-      display: inline-block;
-      vertical-align: middle;
-      top: -1px;
-      position: relative;
-      text-align: center;
-
-      > span,
-      > svg,
-      img {
-        width: 100%;
-        display: block;
-      }
-    }
-
-    &-separator {
-      margin: 0 0.3em;
-    }
-  }
-
-  &-bottom {
-    &-container {
-      border-top: 1px solid rgba(255, 255, 255, 0.25);
-      width: 100%;
-      max-width: 1200px;
-      text-align: center;
-      margin: 0 auto;
-      padding: 16px 0;
-      line-height: 32px;
-      font-size: 16px;
-    }
-  }
-
-  &-light {
-    background-color: transparent;
-    color: rgba(0, 0, 0, 0.85);
-
-    h2,
-    a {
-      color: rgba(0, 0, 0, 0.85);
-    }
-  }
-
-  &-light &-bottom-container {
-    border-top-color: #e8e8e8;
-  }
-
-  &-light &-item-separator,
-  &-light &-item-description {
-    color: rgba(0, 0, 0, 0.45);
-  }
-}
-
-@media only screen and (max-width: 767.99px) {
-  .@{footer-prefix-cls} {
+  &-week{
+    height: 50px;
+    line-height: 50px;
+    flex: 1;
     text-align: center;
-
-    &-container {
-      padding: 40px 0;
-    }
-
-    &-columns {
-      display: block;
-    }
-
-    &-column {
-      display: block;
-      margin-bottom: 40px;
-
-      &:last-child {
-        margin-bottom: 0;
+    border-left: 1px solid #E1E4E7;
+    background: #f5f8fa;
+  }
+  &-events {
+    border: 1px solid #eee;
+    border-top: none;
+    box-sizing: border-box;
+  }
+  &-container{
+    border: 1px solid #eee;
+    border-top: none;
+    box-sizing: border-box;
+  }
+  &-events-bg {
+    position: relative;
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    .@{calender-prefix-cls}-bg-cell{
+      position: relative;
+      cursor: pointer;
+      box-sizing: border-box;
+      flex: 1;
+      border-top: 1px solid #E1E4E7;
+      border-right: 1px solid #E1E4E7;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      &:last-child{
+        border-right: none;
       }
+      &:hover{
+        background: #f2f8ff;
+        .tips-container{
+          display: block;
+        }
+      }
+      .@{calender-prefix-cls}-tips-container{
+        display: none;
+        height: 0;
+      }
+    }
+  }
+  &-other-m{
+    color: rgba(51,71,91,0.45);
+  }
+  &-today{
+    color: #0077FF;
+    background: rgba(0,119,255,0.1);
+  }
+  &-other-m-bg{
+    background: rgb(245, 245, 245);
+  }
+  &-cell-day{
+    text-align: right;
+    padding-right: 10px;
+    font-size: 16px;
+    line-height: 45px;
+    cursor: pointer;
+    .@{calender-prefix-cls}-cell-day-d{
+      border-radius: 50%;
+      height: 34px;
+      line-height: 34px;
+      width: 34px;
+      display: inline-block;
+      vertical-align: middle;
+      text-align: center;
+      user-select: none;
     }
   }
 }
