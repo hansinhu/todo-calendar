@@ -1,2 +1,15 @@
+### 代办事件日历表
 
-[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
+#### React
+
+```bash
+npm install @todo-calender/for-react
+```
+
+#### Vue
+
+```bash
+npm install @todo-calender/for-vue
+```
+
+开发中

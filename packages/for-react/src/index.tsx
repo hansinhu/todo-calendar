@@ -31,7 +31,7 @@ const TodoCalenderReact: React.FC<CalenderProps> = ({
   const layWidth = mainWidth / 7
   const layHeight = 26
   const localeWeeks = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
-  const util = new CalenderUtil(prefixCls)
+  const util = new CalenderUtil({ prefixCls })
   const days = util.getEachCalendar(0)[viewType]
   console.log('----result----', days)
   const addNewEvent = (day: any) => {

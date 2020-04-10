@@ -29,7 +29,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "compile": "npx father build && lessc assets/index.less assets/index.css",
+    "compile": "father build && lessc assets/index.less assets/index.css",
     "prepublishOnly": "npm run compile && np --yolo --no-publish && npm run gh-pages",
     "prettier": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "pretty-quick": "pretty-quick",
