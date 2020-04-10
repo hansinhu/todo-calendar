@@ -11,8 +11,7 @@ export interface CalenderProps {
   theme?: 'dark' | 'light';
   className?: string;
   style?: React.CSSProperties;
-  backgroundColor?: string;
-  columnLayout?: 'space-around' | 'space-between';
+  data?: any[];
 }
 
 const TodoCalenderReact: React.FC<CalenderProps> = ({
@@ -22,16 +21,15 @@ const TodoCalenderReact: React.FC<CalenderProps> = ({
   style,
   bottom,
   maxColumnsPerRow,
-  backgroundColor,
-  columnLayout,
   theme = 'light',
+  data = [],
   ...restProps
 }) => {
   const mainWidth = 1160
   const layWidth = mainWidth / 7
   const layHeight = 26
   const localeWeeks = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
-  const util = new CalenderUtil({ prefixCls })
+  const util = new CalenderUtil({ prefixCls, eventList: data })
   const days = util.getEachCalendar(0)[viewType]
   console.log('----result----', days)
   const addNewEvent = (day: any) => {

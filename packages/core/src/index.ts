@@ -1,18 +1,27 @@
-interface UtilsConfig {
-  prefixCls?: string
+export interface EventItem {
+  [key: string]: any;
+  title: string;
+  color?: string;
+  start: number | string;
+  end: number | string;
+  className?: string;
+}
+
+export interface UtilsConfig {
+  prefixCls: string
+  eventList: EventItem[];
 }
 
 class CalenderUtil {
   prefixCls = 'td-calender'
-  copyAsycList = []
+  eventList = []
   currentDay = 0
   currentYear = 0
   currentMonth = 0
   currentWeek = 0
   constructor (config: UtilsConfig) {
-    if (config.prefixCls) {
-      this.prefixCls = config.prefixCls
-    }
+    this.prefixCls = config.prefixCls
+    this.eventList = config.eventList
   }
 
   formateDate = (year: number, month: number, day: number) => {
@@ -43,7 +52,7 @@ class CalenderUtil {
     item.dateStr = this.formateDate(item.year, item.month, item.date)
     item.eventList = []
     // 异步数据
-    this.copyAsycList.forEach((n) => {
+    this.eventList.forEach((n) => {
       let col = Object.assign({ row: 0 }, n)
       if (n.start === item.dateStr) {
         col.tfDays = this.tfDays(n.start, n.end)
@@ -120,7 +129,7 @@ class CalenderUtil {
       weekLen[w] = 0
     })
     let allLen = 0
-    this.copyAsycList.forEach((ev, i) => {
+    this.eventList.forEach((ev, i) => {
       let obj = {
         _day: this.tfDays(ev.start, ev.end),
         start: ev.start,
@@ -174,7 +183,7 @@ class CalenderUtil {
         let eventPoint = this.getEventPoint(obj._eX, obj._eY, obj._eLen)
         // let eventPoint = this.getEventY(dayWeekIndex, dayEventLen, weekPoint).pointArr // 新点位放入weekPoint
         weekPoint = weekPoint.concat(eventPoint)
-        this.copyAsycList[i]._eY = obj._eY
+        this.eventList[i]._eY = obj._eY
       }
     })
     return {
