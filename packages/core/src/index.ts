@@ -1,4 +1,4 @@
-export interface EventItem {
+export interface TodoItem {
   [key: string]: any;
   title: string;
   color?: string;
@@ -9,25 +9,37 @@ export interface EventItem {
 
 export interface UtilsConfig {
   prefixCls: string
-  eventList: EventItem[];
+  todoList: TodoItem[];
 }
 
 class CalenderUtil {
   prefixCls = 'td-calender'
-  eventList = []
-  currentDay = 0
-  currentYear = 0
-  currentMonth = 0
-  currentWeek = 0
+  todoList = []
+  cuDay = 0
+  cuYear = 0
+  cuMonth = 0
+  cuWeek = 0
+  // today
+  tdDay = 0
+  tdYear = 0
+  tdMonth = 0
+  tdDateStr = ''
+
   constructor (config: UtilsConfig) {
     this.prefixCls = config.prefixCls
-    this.eventList = config.eventList
+    this.todoList = config.todoList
+    // 今天
+    const tDate = new Date()
+    this.tdDay = tDate.getDate()
+    this.tdYear = tDate.getFullYear()
+    this.tdMonth = tDate.getMonth() + 1
+    this.tdDateStr = this.formateDate(this.tdYear, this.tdMonth, this.tdDay)
   }
 
   formateDate = (year: number, month: number, day: number) => {
     var y = year
-    var m = month < 10 ? `0${month}` : month
-    var d = day < 10 ? `0${day}` : month
+    var m = `${month}`.padStart(2, '00')
+    var d = `${day}`.padStart(2, '00')
     return y + '-' + m + '-' + d
   }
 
@@ -50,14 +62,14 @@ class CalenderUtil {
     item.year = d.getFullYear()
     item.month = d.getMonth() + 1
     item.dateStr = this.formateDate(item.year, item.month, item.date)
-    item.eventList = []
+    item.todoList = []
     // 异步数据
-    this.eventList.forEach((n) => {
+    this.todoList.forEach((n) => {
       let col = Object.assign({ row: 0 }, n)
       if (n.start === item.dateStr) {
         col.tfDays = this.tfDays(n.start, n.end)
         col.row = col.row + col.tfDays
-        item.eventList.push(col)
+        item.todoList.push(col)
       }
     })
     return item
@@ -116,6 +128,7 @@ class CalenderUtil {
   }
 
   initEventList = (weekArr) => {
+    console.log('weekArr:', weekArr, this.todoList)
     let week = []
     weekArr.forEach((n) => { // 初始化周表
       week.push(n.dateStr)
@@ -129,7 +142,9 @@ class CalenderUtil {
       weekLen[w] = 0
     })
     let allLen = 0
-    this.eventList.forEach((ev, i) => {
+    console.log(weekObj)
+    this.todoList.forEach((ev, i) => {
+      console.log('ev:', ev)
       let obj = {
         _day: this.tfDays(ev.start, ev.end),
         start: ev.start,
@@ -145,6 +160,7 @@ class CalenderUtil {
       let dayWeekYi = 0
       let className = ev.className || ''
       // 事件的Start在本周，或者本周第一天（周日）在事件中
+      console.log('---------', weekObj, weekObj[ev.start], this.inMiddleDay(ev.start, ev.end, week[0]))
       if (weekObj[ev.start] || this.inMiddleDay(ev.start, ev.end, week[0])) {
         if (weekObj[ev.start]) {
           dayWeekIndex = week.indexOf(ev.start)
@@ -183,7 +199,7 @@ class CalenderUtil {
         let eventPoint = this.getEventPoint(obj._eX, obj._eY, obj._eLen)
         // let eventPoint = this.getEventY(dayWeekIndex, dayEventLen, weekPoint).pointArr // 新点位放入weekPoint
         weekPoint = weekPoint.concat(eventPoint)
-        this.eventList[i]._eY = obj._eY
+        this.todoList[i]._eY = obj._eY
       }
     })
     return {
@@ -202,7 +218,7 @@ class CalenderUtil {
 
   isOtherMonth (item) {
     // let d = new Date()
-    if (item.month === this.currentMonth && item.year === this.currentYear) {
+    if (item.month === this.cuMonth && item.year === this.cuYear) {
       return false
     } else {
       return true
@@ -218,27 +234,22 @@ class CalenderUtil {
     }
   }
 
-  getEachCalendar = (weekRangIndex = 0, cur?: number | string, tdate?: number | string, ) => {
+  getEachCalendar = (weekRangIndex = 0, cur?: number | string) => {
     const date = cur ? new Date(cur) : new Date()
-    this.currentDay = date.getDate()
-    this.currentYear = date.getFullYear()
-    this.currentMonth = date.getMonth() + 1
-    this.currentWeek = date.getDay()
-    const currentDateStr = this.formateDate(this.currentYear, this.currentMonth, this.currentDay)
+    this.cuDay = date.getDate()
+    this.cuYear = date.getFullYear()
+    this.cuMonth = date.getMonth() + 1
+    this.cuWeek = date.getDay()
+    const currentDateStr = this.formateDate(this.cuYear, this.cuMonth, this.cuDay)
   
-    const tDate = tdate ? new Date(tdate) : new Date('1970-01-01')
-    const tDay = tDate.getDate()
-    const tYear = tDate.getFullYear()
-    const tMonth = tDate.getMonth() + 1
-  
-    let traceDay = 35 - (this.currentWeek + 1)
+    let traceDay = 35 - (this.cuWeek + 1)
   
     // 当前周
-    let currentWeekIndex = 0
+    let cuWeekIndex = 0
     
     let dayArr = []
     // 第一天以前的数据（上个月的数据）
-    for (let i = this.currentWeek; i >= 0; i--) {
+    for (let i = this.cuWeek; i >= 0; i--) {
       let d = new Date(currentDateStr)
       d.setDate(d.getDate() - i)
       dayArr.push(this.dealDateData(d))
@@ -257,30 +268,30 @@ class CalenderUtil {
     // 计算本周索引
     for (let i = 0; i < 5; i++) {
       let weekArr = copyWeekArr.splice(0, 7)
-      let todyStr = this.formateDate(tYear, tMonth, tDay)
       weekArr.forEach((n, j) => {
-        if (todyStr === n.dateStr) {
-          currentWeekIndex = i
+        if (this.tdDateStr === n.dateStr) {
+          cuWeekIndex = i
         }
       })
     }
     for (let i = 0; i < 5; i++) {
       let weekArr = copyDayArr.splice(0, 7)
+      const { objList, weekLen } = this.initEventList(weekArr)
       // 筛选出周数据
       if (i === weekRangIndex) {
         dayArrObj.push({
           dayArr: weekArr,
-          weekEventList: this.initEventList(weekArr).objList,
-          bgMinHeight: this.getBgMinHeight(this.initEventList(weekArr).objList),
-          weekLen: this.initEventList(weekArr).weekLen
+          weekEventList: objList,
+          bgMinHeight: this.getBgMinHeight(objList),
+          weekLen: weekLen,
         })
       }
       // 月数据
       monthDayArr.push({
         dayArr: weekArr,
-        weekEventList: this.initEventList(weekArr).objList,
-        bgMinHeight: this.getBgMinHeight(this.initEventList(weekArr).objList),
-        weekLen: this.initEventList(weekArr).weekLen
+        weekEventList: objList,
+        bgMinHeight: this.getBgMinHeight(objList),
+        weekLen: weekLen,
       })
     }
   

@@ -17,11 +17,6 @@
     border-left: 1px solid #E1E4E7;
     background: #f5f8fa;
   }
-  &-events {
-    border: 1px solid #eee;
-    border-top: none;
-    box-sizing: border-box;
-  }
   &-container{
     border: 1px solid #eee;
     border-top: none;
@@ -83,6 +78,17 @@
       vertical-align: middle;
       text-align: center;
       user-select: none;
+    }
+  }
+  &-events{
+    width: 100%;
+    box-sizing: border-box;
+    position: absolute;
+    height: 0;
+    .@{calender-prefix-cls}-event{
+      box-sizing: border-box;
+      padding-top: 2px;
+      position: absolute;
     }
   }
 }

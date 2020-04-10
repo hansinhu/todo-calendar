@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from 'classnames';
-import CalenderUtil from '@todo-calendar/core'
+import CalenderUtil, { TodoItem } from '@todo-calendar/core/src/index'
 require('../assets/index.less')
 
 export interface CalenderProps {
@@ -11,7 +11,7 @@ export interface CalenderProps {
   theme?: 'dark' | 'light';
   className?: string;
   style?: React.CSSProperties;
-  data?: any[];
+  data?: TodoItem[];
 }
 
 const TodoCalenderReact: React.FC<CalenderProps> = ({
@@ -25,11 +25,11 @@ const TodoCalenderReact: React.FC<CalenderProps> = ({
   data = [],
   ...restProps
 }) => {
-  const mainWidth = 1160
+  const mainWidth = 614
   const layWidth = mainWidth / 7
   const layHeight = 26
   const localeWeeks = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
-  const util = new CalenderUtil({ prefixCls, eventList: data })
+  const util = new CalenderUtil({ prefixCls, todoList: data })
   const days = util.getEachCalendar(0)[viewType]
   console.log('----result----', days)
   const addNewEvent = (day: any) => {
@@ -97,11 +97,35 @@ const TodoCalenderReact: React.FC<CalenderProps> = ({
                   })
                 }
               </ul>
+
+              <div style={{ position: 'relative' }}>
+                <div
+                  className={`${prefixCls}-events`}
+                  style={{top: '-' + (obj.bgMinHeight * layHeight + 2) + 'px'}}
+                >
+                  <div style={{width: 0,minHeight: (obj.bgMinHeight * layHeight) + 'px'}}></div>
+                  {
+                    obj.weekEventList.map((wek: any, j: number) => {
+                      return <div className={`${prefixCls}-event`}
+                        key={j}
+                        style={{
+                          width: (wek._eLen * layWidth) + 'px',
+                          height: layHeight + 'px',
+                          left: (wek._eX * layWidth) + 'px',
+                          top: (wek._eY * layHeight) + 'px'
+                        }}
+                      >
+                        ssss
+                      </div>
+                    })
+                  }
+                </div>
+              </div>
             </div>
           })
         }
-
       </div>
+
 
     </div>
   );
