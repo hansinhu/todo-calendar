@@ -143,39 +143,34 @@ class CalenderUtil {
     })
     let allLen = 0
     console.log(weekObj)
-    this.todoList.forEach((ev, i) => {
-      console.log('ev:', ev)
-      let obj = {
-        _day: this.tfDays(ev.start, ev.end),
-        start: ev.start,
-        end: ev.end,
-        data: ev,
+    this.todoList.forEach((data, i) => {
+      let obj = Object.assign({
+        _day: this.tfDays(data.start, data.end),
         _eLen: 0,
         _eX: 0,
         _eY: 0,
         className: '',
-      }
+      }, data)
       let dayWeekIndex = 0
       let dayEventLen = 0
       let dayWeekYi = 0
-      let className = ev.className || ''
+      let className = data.className || ''
       // 事件的Start在本周，或者本周第一天（周日）在事件中
-      console.log('---------', weekObj, weekObj[ev.start], this.inMiddleDay(ev.start, ev.end, week[0]))
-      if (weekObj[ev.start] || this.inMiddleDay(ev.start, ev.end, week[0])) {
-        if (weekObj[ev.start]) {
-          dayWeekIndex = week.indexOf(ev.start)
-          // weekLen[ev.start] = weekLen[ev.start] + 1
-          if (dayWeekIndex + this.tfDays(ev.start, ev.end) <= week.length) {
-            dayEventLen = this.tfDays(ev.start, ev.end)
+      if (weekObj[data.start] || this.inMiddleDay(data.start, data.end, week[0])) {
+        if (weekObj[data.start]) {
+          dayWeekIndex = week.indexOf(data.start)
+          // weekLen[data.start] = weekLen[data.start] + 1
+          if (dayWeekIndex + this.tfDays(data.start, data.end) <= week.length) {
+            dayEventLen = this.tfDays(data.start, data.end)
             className = className + ` ${this.prefixCls}-is-start ${this.prefixCls}-is-end`
           } else {
             dayEventLen = week.length - dayWeekIndex
             className = className + ` ${this.prefixCls}-is-start`
           }
           // 如果是周的第一天，切在一个事件的中
-        } else if (this.inMiddleDay(ev.start, ev.end, week[0])) {
-          if (dayWeekIndex + this.tfDays(week[0], ev.end) <= week.length) {
-            dayEventLen = this.tfDays(week[0], ev.end)
+        } else if (this.inMiddleDay(data.start, data.end, week[0])) {
+          if (dayWeekIndex + this.tfDays(week[0], data.end) <= week.length) {
+            dayEventLen = this.tfDays(week[0], data.end)
             className = className + ` ${this.prefixCls}-is-end`
           } else {
             dayEventLen = week.length - dayWeekIndex
@@ -184,12 +179,12 @@ class CalenderUtil {
         }
         // 用于记录当天有多少日程在进行
         week.forEach((n) => {
-          if (this.weekMiddleEvent(n, ev.start, ev.end)) {
+          if (this.weekMiddleEvent(n, data.start, data.end)) {
             weekLen[n] = weekLen[n] + 1
           }
         })
-        // ev._eY用于与上上周位置对齐
-        dayWeekYi = ev._eY || this.getEventY(dayWeekIndex, dayEventLen, weekPoint).yI
+        // data._eY用于与上上周位置对齐
+        dayWeekYi = data._eY || this.getEventY(dayWeekIndex, dayEventLen, weekPoint).yI
         obj._eLen = dayEventLen // event 长度，不能超过一周（7）
         obj._eX = dayWeekIndex // 当天所在周的标（横坐标X）原点（0,0）
         obj._eY = dayWeekYi // 纵坐标Y
@@ -199,6 +194,7 @@ class CalenderUtil {
         let eventPoint = this.getEventPoint(obj._eX, obj._eY, obj._eLen)
         // let eventPoint = this.getEventY(dayWeekIndex, dayEventLen, weekPoint).pointArr // 新点位放入weekPoint
         weekPoint = weekPoint.concat(eventPoint)
+        // data._eY用于与上上周位置对齐
         this.todoList[i]._eY = obj._eY
       }
     })

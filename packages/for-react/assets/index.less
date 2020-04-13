@@ -89,6 +89,15 @@
       box-sizing: border-box;
       padding-top: 2px;
       position: absolute;
+      &.@{calender-prefix-cls}-is-start{
+        margin-left: 1px;
+        border-top-left-radius: 12px;
+        border-bottom-left-radius: 12px;
+      }
+      &.@{calender-prefix-cls}-is-end{
+        border-top-right-radius: 12px;
+        border-bottom-right-radius: 12px;
+      }
     }
   }
 }

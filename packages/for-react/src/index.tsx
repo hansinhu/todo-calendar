@@ -106,13 +106,14 @@ const TodoCalenderReact: React.FC<CalenderProps> = ({
                   <div style={{width: 0,minHeight: (obj.bgMinHeight * layHeight) + 'px'}}></div>
                   {
                     obj.weekEventList.map((wek: any, j: number) => {
-                      return <div className={`${prefixCls}-event`}
+                      return <div className={`${prefixCls}-event ${wek.className}`}
                         key={j}
                         style={{
                           width: (wek._eLen * layWidth) + 'px',
                           height: layHeight + 'px',
                           left: (wek._eX * layWidth) + 'px',
-                          top: (wek._eY * layHeight) + 'px'
+                          top: (wek._eY * layHeight) + 'px',
+                          backgroundColor: wek.color,
                         }}
                       >
                         ssss
